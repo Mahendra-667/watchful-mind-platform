@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /auth
+Disallow: /incidents
+Disallow: /analytics
+Disallow: /reports
