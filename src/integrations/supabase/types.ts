@@ -14,7 +14,81 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      incidents: {
+        Row: {
+          camera_label: string
+          category: string
+          confidence: number
+          description: string
+          detected_at: string
+          id: string
+          recommended_actions: Json
+          resolution_notes: string | null
+          resolved_at: string | null
+          severity_level: Database["public"]["Enums"]["incident_severity"]
+          severity_score: number
+          snapshot_data_url: string | null
+          status: Database["public"]["Enums"]["incident_status"]
+          title: string
+          user_id: string
+        }
+        Insert: {
+          camera_label?: string
+          category: string
+          confidence?: number
+          description: string
+          detected_at?: string
+          id?: string
+          recommended_actions?: Json
+          resolution_notes?: string | null
+          resolved_at?: string | null
+          severity_level: Database["public"]["Enums"]["incident_severity"]
+          severity_score: number
+          snapshot_data_url?: string | null
+          status?: Database["public"]["Enums"]["incident_status"]
+          title: string
+          user_id: string
+        }
+        Update: {
+          camera_label?: string
+          category?: string
+          confidence?: number
+          description?: string
+          detected_at?: string
+          id?: string
+          recommended_actions?: Json
+          resolution_notes?: string | null
+          resolved_at?: string | null
+          severity_level?: Database["public"]["Enums"]["incident_severity"]
+          severity_score?: number
+          snapshot_data_url?: string | null
+          status?: Database["public"]["Enums"]["incident_status"]
+          title?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +97,8 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      incident_severity: "Low" | "Medium" | "High" | "Critical"
+      incident_status: "active" | "acknowledged" | "resolved"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +225,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      incident_severity: ["Low", "Medium", "High", "Critical"],
+      incident_status: ["active", "acknowledged", "resolved"],
+    },
   },
 } as const
