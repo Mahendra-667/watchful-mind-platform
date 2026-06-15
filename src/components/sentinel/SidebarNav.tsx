@@ -1,8 +1,9 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Activity, BarChart3, FileText, LayoutDashboard, ShieldAlert } from "lucide-react";
+import { Activity, BarChart3, FileText, LayoutDashboard, ScanEye, ShieldAlert } from "lucide-react";
 
 const items = [
   { to: "/", label: "Monitoring", icon: LayoutDashboard },
+  { to: "/vision", label: "AI Vision", icon: ScanEye },
   { to: "/incidents", label: "Incidents", icon: ShieldAlert },
   { to: "/analytics", label: "Analytics", icon: BarChart3 },
   { to: "/reports", label: "Reports", icon: FileText },
