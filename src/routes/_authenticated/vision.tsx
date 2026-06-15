@@ -173,7 +173,7 @@ function VisionPage() {
 
   return (
     <div className="flex-1 flex flex-col min-w-0">
-      <TopBar title="AI Vision" subtitle="Upload an image or video frame for Gemini Vision analysis" />
+      <TopBar title="AI Vision" totalActive={0} critical={0} />
       <div className="flex-1 overflow-auto p-6">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-6">
           {/* Upload panel */}
