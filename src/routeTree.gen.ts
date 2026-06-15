@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
+import { Route as AuthenticatedVisionRouteImport } from './routes/_authenticated/vision'
 import { Route as AuthenticatedReportsRouteImport } from './routes/_authenticated/reports'
 import { Route as AuthenticatedIncidentsRouteImport } from './routes/_authenticated/incidents'
 import { Route as AuthenticatedAnalyticsRouteImport } from './routes/_authenticated/analytics'
@@ -28,6 +29,11 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
 const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedVisionRoute = AuthenticatedVisionRouteImport.update({
+  id: '/vision',
+  path: '/vision',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedReportsRoute = AuthenticatedReportsRouteImport.update({
@@ -52,12 +58,14 @@ export interface FileRoutesByFullPath {
   '/analytics': typeof AuthenticatedAnalyticsRoute
   '/incidents': typeof AuthenticatedIncidentsRoute
   '/reports': typeof AuthenticatedReportsRoute
+  '/vision': typeof AuthenticatedVisionRoute
 }
 export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/analytics': typeof AuthenticatedAnalyticsRoute
   '/incidents': typeof AuthenticatedIncidentsRoute
   '/reports': typeof AuthenticatedReportsRoute
+  '/vision': typeof AuthenticatedVisionRoute
   '/': typeof AuthenticatedIndexRoute
 }
 export interface FileRoutesById {
@@ -67,13 +75,20 @@ export interface FileRoutesById {
   '/_authenticated/analytics': typeof AuthenticatedAnalyticsRoute
   '/_authenticated/incidents': typeof AuthenticatedIncidentsRoute
   '/_authenticated/reports': typeof AuthenticatedReportsRoute
+  '/_authenticated/vision': typeof AuthenticatedVisionRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/analytics' | '/incidents' | '/reports'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/analytics'
+    | '/incidents'
+    | '/reports'
+    | '/vision'
   fileRoutesByTo: FileRoutesByTo
-  to: '/auth' | '/analytics' | '/incidents' | '/reports' | '/'
+  to: '/auth' | '/analytics' | '/incidents' | '/reports' | '/vision' | '/'
   id:
     | '__root__'
     | '/_authenticated'
@@ -81,6 +96,7 @@ export interface FileRouteTypes {
     | '/_authenticated/analytics'
     | '/_authenticated/incidents'
     | '/_authenticated/reports'
+    | '/_authenticated/vision'
     | '/_authenticated/'
   fileRoutesById: FileRoutesById
 }
@@ -112,6 +128,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/vision': {
+      id: '/_authenticated/vision'
+      path: '/vision'
+      fullPath: '/vision'
+      preLoaderRoute: typeof AuthenticatedVisionRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/reports': {
       id: '/_authenticated/reports'
       path: '/reports'
@@ -140,6 +163,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedAnalyticsRoute: typeof AuthenticatedAnalyticsRoute
   AuthenticatedIncidentsRoute: typeof AuthenticatedIncidentsRoute
   AuthenticatedReportsRoute: typeof AuthenticatedReportsRoute
+  AuthenticatedVisionRoute: typeof AuthenticatedVisionRoute
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
 }
 
@@ -147,6 +171,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAnalyticsRoute: AuthenticatedAnalyticsRoute,
   AuthenticatedIncidentsRoute: AuthenticatedIncidentsRoute,
   AuthenticatedReportsRoute: AuthenticatedReportsRoute,
+  AuthenticatedVisionRoute: AuthenticatedVisionRoute,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
 }
 
