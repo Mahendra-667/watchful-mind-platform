@@ -92,6 +92,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "Sentinel AI — Autonomous Anomaly Detection" },
+      { name: "description", content: "Sentinel Watch is an autonomous platform that monitors live camera feeds to detect and respond to safety incidents in real-time." },
+      { property: "og:description", content: "Sentinel Watch is an autonomous platform that monitors live camera feeds to detect and respond to safety incidents in real-time." },
+      { name: "twitter:description", content: "Sentinel Watch is an autonomous platform that monitors live camera feeds to detect and respond to safety incidents in real-time." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7dba9356-c122-4ccc-a305-c293fab8a6de/id-preview-35798bcc--f8f74b96-18e3-4ebc-b209-61699dbd2e4e.lovable.app-1781500742556.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7dba9356-c122-4ccc-a305-c293fab8a6de/id-preview-35798bcc--f8f74b96-18e3-4ebc-b209-61699dbd2e4e.lovable.app-1781500742556.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
