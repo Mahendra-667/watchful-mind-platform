@@ -49,20 +49,29 @@ function MonitoringPage() {
     },
   });
 
-  // Realtime subscription
+  // Realtime subscription — scoped to current user's topic
   useEffect(() => {
-    const ch = supabase
-      .channel("incidents-stream")
-      .on(
-        "postgres_changes",
-        { event: "*", schema: "public", table: "incidents" },
-        () => qc.invalidateQueries({ queryKey: ["incidents"] }),
-      )
-      .subscribe();
+    let cancelled = false;
+    let ch: ReturnType<typeof supabase.channel> | null = null;
+    (async () => {
+      const { data } = await supabase.auth.getUser();
+      const uid = data.user?.id;
+      if (!uid || cancelled) return;
+      ch = supabase
+        .channel(`incidents:${uid}`, { config: { private: true } })
+        .on(
+          "postgres_changes",
+          { event: "*", schema: "public", table: "incidents", filter: `user_id=eq.${uid}` },
+          () => qc.invalidateQueries({ queryKey: ["incidents"] }),
+        )
+        .subscribe();
+    })();
     return () => {
-      supabase.removeChannel(ch);
+      cancelled = true;
+      if (ch) supabase.removeChannel(ch);
     };
   }, [qc]);
+
 
   // Camera state
   const videoRefs: Record<CamId, React.RefObject<HTMLVideoElement | null>> = {
