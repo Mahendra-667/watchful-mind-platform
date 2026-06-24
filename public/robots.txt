@@ -4,3 +4,5 @@ Disallow: /auth
 Disallow: /incidents
 Disallow: /analytics
 Disallow: /reports
+
+Sitemap: https://watchful-mind-platform.lovable.app/sitemap.xml
