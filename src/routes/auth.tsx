@@ -17,7 +17,21 @@ export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
       { title: "Sign in · Sentinel AI" },
-      { name: "description", content: "Access your Sentinel AI monitoring console." },
+      {
+        name: "description",
+        content:
+          "Sign in or create an operator account to access the Sentinel AI autonomous safety monitoring console.",
+      },
+      { property: "og:title", content: "Sign in · Sentinel AI" },
+      {
+        property: "og:description",
+        content:
+          "Sign in or create an operator account to access the Sentinel AI autonomous safety monitoring console.",
+      },
+      { property: "og:url", content: "https://watchful-mind-platform.lovable.app/auth" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://watchful-mind-platform.lovable.app/auth" },
     ],
   }),
   component: AuthPage,

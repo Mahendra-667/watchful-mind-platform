@@ -13,7 +13,21 @@ export const Route = createFileRoute("/_authenticated/reports")({
   head: () => ({
     meta: [
       { title: "Reports · Sentinel AI" },
-      { name: "description", content: "Generate and download incident reports." },
+      {
+        name: "description",
+        content:
+          "Generate and download detailed PDF incident reports including AI-recommended actions, severity scores, and resolution notes.",
+      },
+      { property: "og:title", content: "Reports · Sentinel AI" },
+      {
+        property: "og:description",
+        content:
+          "Generate and download detailed PDF incident reports including AI-recommended actions, severity scores, and resolution notes.",
+      },
+      { property: "og:url", content: "https://watchful-mind-platform.lovable.app/reports" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://watchful-mind-platform.lovable.app/reports" },
     ],
   }),
   component: ReportsPage,

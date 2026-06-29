@@ -1,0 +1,17 @@
+# Sentinel AI
+
+> Sentinel AI is an autonomous safety monitoring platform that continuously analyzes live camera feeds and uploaded media to detect, classify, and respond to incidents in real time.
+
+Sentinel AI uses Gemini Vision to detect anomalies such as fire, intrusion, accidents, and congestion across webcam, mobile, and uploaded video sources. Each detection produces a severity score, confidence level, and AI-generated emergency response recommendations.
+
+## Pages
+
+- [Sign in](/auth): Sign in or create an operator account to access the Sentinel AI console.
+
+## Optional
+
+- [Main monitoring](/): Live multi-camera anomaly monitoring console (requires sign-in).
+- [AI Vision](/vision): Upload an image or video frame for Gemini Vision analysis (requires sign-in).
+- [Incidents](/incidents): Full incident history filterable by severity (requires sign-in).
+- [Analytics](/analytics): Detection trends and severity distribution (requires sign-in).
+- [Reports](/reports): Download PDF incident reports (requires sign-in).

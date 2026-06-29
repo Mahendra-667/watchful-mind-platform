@@ -35,6 +35,7 @@ export function SidebarNav() {
                   : "bg-transparent text-muted-foreground ring-transparent hover:bg-surface hover:text-foreground",
               ].join(" ")}
               title={it.label}
+              aria-label={it.label}
             >
               <Icon className="size-4" />
             </Link>
