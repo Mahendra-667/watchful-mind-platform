@@ -17,7 +17,21 @@ export const Route = createFileRoute("/_authenticated/")({
   head: () => ({
     meta: [
       { title: "Main Monitoring · Sentinel AI" },
-      { name: "description", content: "Live multi-camera anomaly monitoring console." },
+      {
+        name: "description",
+        content:
+          "Live multi-camera anomaly monitoring console with real-time AI detection, severity scoring, and incident response recommendations.",
+      },
+      { property: "og:title", content: "Main Monitoring · Sentinel AI" },
+      {
+        property: "og:description",
+        content:
+          "Live multi-camera anomaly monitoring console with real-time AI detection, severity scoring, and incident response recommendations.",
+      },
+      { property: "og:url", content: "https://watchful-mind-platform.lovable.app/" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://watchful-mind-platform.lovable.app/" },
     ],
   }),
   component: MonitoringPage,

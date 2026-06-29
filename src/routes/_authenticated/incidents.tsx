@@ -14,7 +14,21 @@ export const Route = createFileRoute("/_authenticated/incidents")({
   head: () => ({
     meta: [
       { title: "Incidents · Sentinel AI" },
-      { name: "description", content: "Complete incident history and timeline." },
+      {
+        name: "description",
+        content:
+          "Complete Sentinel AI incident history and timeline, filterable by severity from Low to Critical across all monitored camera feeds.",
+      },
+      { property: "og:title", content: "Incidents · Sentinel AI" },
+      {
+        property: "og:description",
+        content:
+          "Complete Sentinel AI incident history and timeline, filterable by severity from Low to Critical across all monitored camera feeds.",
+      },
+      { property: "og:url", content: "https://watchful-mind-platform.lovable.app/incidents" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://watchful-mind-platform.lovable.app/incidents" },
     ],
   }),
   component: IncidentsPage,

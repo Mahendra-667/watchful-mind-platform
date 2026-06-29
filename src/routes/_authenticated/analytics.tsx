@@ -22,7 +22,21 @@ export const Route = createFileRoute("/_authenticated/analytics")({
   head: () => ({
     meta: [
       { title: "Analytics · Sentinel AI" },
-      { name: "description", content: "Detection trends, risk distribution, and KPIs." },
+      {
+        name: "description",
+        content:
+          "Detection trends, severity distribution, and top categories across all Sentinel AI monitored incidents over the last 7 days.",
+      },
+      { property: "og:title", content: "Analytics · Sentinel AI" },
+      {
+        property: "og:description",
+        content:
+          "Detection trends, severity distribution, and top categories across all Sentinel AI monitored incidents over the last 7 days.",
+      },
+      { property: "og:url", content: "https://watchful-mind-platform.lovable.app/analytics" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://watchful-mind-platform.lovable.app/analytics" },
     ],
   }),
   component: AnalyticsPage,
@@ -98,9 +112,9 @@ function AnalyticsPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <div className="lg:col-span-2 bg-surface/40 border border-border rounded-lg p-5">
-            <h3 className="text-[10px] uppercase font-semibold text-muted-foreground tracking-wider mb-4">
+            <h2 className="text-[10px] uppercase font-semibold text-muted-foreground tracking-wider mb-4">
               Detection Trend · 7 days
-            </h3>
+            </h2>
             <ResponsiveContainer width="100%" height={240}>
               <AreaChart data={trendData}>
                 <defs>
@@ -122,9 +136,9 @@ function AnalyticsPage() {
           </div>
 
           <div className="bg-surface/40 border border-border rounded-lg p-5">
-            <h3 className="text-[10px] uppercase font-semibold text-muted-foreground tracking-wider mb-4">
+            <h2 className="text-[10px] uppercase font-semibold text-muted-foreground tracking-wider mb-4">
               Severity Distribution
-            </h3>
+            </h2>
             <ResponsiveContainer width="100%" height={240}>
               <PieChart>
                 <Pie data={sevData} dataKey="value" innerRadius={50} outerRadius={80} paddingAngle={2}>
@@ -150,9 +164,9 @@ function AnalyticsPage() {
         </div>
 
         <div className="bg-surface/40 border border-border rounded-lg p-5">
-          <h3 className="text-[10px] uppercase font-semibold text-muted-foreground tracking-wider mb-4">
+          <h2 className="text-[10px] uppercase font-semibold text-muted-foreground tracking-wider mb-4">
             Top Detection Categories
-          </h3>
+          </h2>
           <div className="space-y-3">
             {categoryData.length === 0 && (
               <p className="text-sm text-muted-foreground">No detections yet.</p>

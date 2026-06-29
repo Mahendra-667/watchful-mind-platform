@@ -26,8 +26,18 @@ export const Route = createFileRoute("/_authenticated/vision")({
       {
         name: "description",
         content:
-          "Upload an image or extract a video frame and analyze it with Gemini Vision for safety anomalies.",
+          "Upload an image or extract a video frame and analyze it with Gemini Vision for safety anomalies, risk scoring, and emergency recommendations.",
       },
+      { property: "og:title", content: "AI Vision · Sentinel AI" },
+      {
+        property: "og:description",
+        content:
+          "Upload an image or extract a video frame and analyze it with Gemini Vision for safety anomalies, risk scoring, and emergency recommendations.",
+      },
+      { property: "og:url", content: "https://watchful-mind-platform.lovable.app/vision" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://watchful-mind-platform.lovable.app/vision" },
     ],
   }),
   component: VisionPage,
